@@ -8,7 +8,7 @@ const projects = [
     lead: 'Siraj Mahmood',
     category: 'Computer Science',
     status: 'Ongoing',
-    image: 'https://media.licdn.com/dms/image/v2/D4D03AQFvd4d1B9aM4w/profile-displayphoto-scale_200_200/B4DZvGGiaCJYAY-/0/1768555162696?e=1773878400&v=beta&t=gjgPzsDsHoOWW6L5-_BcWkV2hhfSpz9Cr8Bt6xa4MGQ'
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQEt14cgoFuHxw/feedshare-shrink_480/B4DZqEDjsKGsAY-/0/1763152124162?e=1773878400&v=beta&t=uZ44AZpoBuL8M1VPcAO2f-k2riU9IZWRhwN328ahLwY'
   },
   {
     title: 'Code Rush Arena',
