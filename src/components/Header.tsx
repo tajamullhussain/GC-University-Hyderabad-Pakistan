@@ -31,11 +31,11 @@ export default function Header() {
       {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
-          <img 
-            src="https://tse2.mm.bing.net/th/id/OIP.eirSUEHZHhrHA4Fhv32gRwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" 
-            alt="GCUH Logo" 
+          <img
+            src="https://tse2.mm.bing.net/th/id/OIP.eirSUEHZHhrHA4Fhv32gRwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="GCUH Logo"
             className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform"
-            onError={(e)=>{e.target.src='https://picsum.photos/seed/gcuh/100/100'}}
+            onError={(e) => { e.target.src = 'https://picsum.photos/seed/gcuh/100/100'; }}
           />
           <div>
             <h1 className="text-gcuh-maroon font-extrabold text-lg md:text-xl leading-none">GC UNIVERSITY</h1>
@@ -69,14 +69,20 @@ export default function Header() {
           <Link to="/scholarships" className="nav-link-modern">Scholarships</Link>
           <Link to="/research" className="nav-link-modern">Research</Link>
           <Link to="/contact" className="nav-link-modern">Contact</Link>
-          <Link to="/apply" className="px-6 py-2.5 bg-gcuh-maroon text-white font-bold rounded-full hover:bg-gcuh-gold transition-all shadow-lg shadow-maroon-900/20 active:scale-95 whitespace-nowrap ml-4">
+          <Link
+            to="/apply"
+            className="px-6 py-2.5 bg-gcuh-maroon text-white font-bold rounded-full hover:bg-gcuh-gold transition-all shadow-lg shadow-maroon-900/20 active:scale-95 whitespace-nowrap ml-4"
+          >
             Apply Online
           </Link>
         </nav>
 
         <div className="flex items-center gap-4 lg:hidden">
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 text-gcuh-maroon">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 text-gcuh-maroon"
+          >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -85,24 +91,29 @@ export default function Header() {
       {/* Mobile Menu */}
       <div className={`lg:hidden fixed inset-0 z-[100] ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         {/* Backdrop */}
-        <div 
-          className={`absolute inset-0 bg-slate-900/60 backdrop-blur-sm ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+        <div
+          className={`absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={() => setIsMobileMenuOpen(false)}
         />
         {/* Sidebar */}
-        <div className={`absolute top-0 left-0 bottom-0 w-[80%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div
+          className={`absolute top-0 left-0 bottom-0 w-[80%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        >
           <div className="p-6 flex flex-col h-full">
             <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-2">
-                <img 
-                  src="https://tse2.mm.bing.net/th/id/OIP.eirSUEHZHhrHA4Fhv32gRwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" 
-                  alt="Logo" 
-                  className="h-10 w-auto" 
-                  onError={(e)=>{e.target.src='https://picsum.photos/seed/gcuh/100/100'}}
+                <img
+                  src="https://tse2.mm.bing.net/th/id/OIP.eirSUEHZHhrHA4Fhv32gRwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
+                  alt="Logo"
+                  className="h-10 w-auto"
+                  onError={(e) => { e.target.src = 'https://picsum.photos/seed/gcuh/100/100'; }}
                 />
                 <span className="font-serif font-bold text-gcuh-maroon">GCUH</span>
               </div>
-              <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 rounded-full bg-slate-100 text-slate-500 hover:text-gcuh-maroon transition-all">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 rounded-full bg-slate-100 text-slate-500 hover:text-gcuh-maroon transition-all"
+              >
                 <X className="w-6 h-6" />
               </button>
             </div>
@@ -110,31 +121,40 @@ export default function Header() {
             <nav className="flex flex-col gap-2 overflow-y-auto">
               {[
                 { label: 'Home', path: '/' },
-                { label: 'About', path: '/about', children:[
-                  { label: 'Vision & Mission', path:'/about/vision-mission'},
-                  { label: 'History', path:'/about/university'},
-                  { label: 'VC Message', path:'/about/vc-message'},
-                ]},
-                { label: 'Departments', path:'/departments'},
-                { label: 'Scholarships', path:'/scholarships'},
-                { label: 'Research', path:'/research'},
-                { label: 'Student Corner', path:'/student-corner'},
-                { label: 'Complaints', path:'/complaint'},
-                { label: 'Contact', path:'/contact'},
-                { label: 'Apply Online', path:'/apply'},
-              ].map(item => (
+                {
+                  label: 'About',
+                  path: '/about',
+                  children: [
+                    { label: 'Vision & Mission', path: '/about/vision-mission' },
+                    { label: 'History', path: '/about/university' },
+                    { label: 'VC Message', path: '/about/vc-message' },
+                  ],
+                },
+                { label: 'Departments', path: '/departments' },
+                { label: 'Scholarships', path: '/scholarships' },
+                { label: 'Research', path: '/research' },
+                { label: 'Student Corner', path: '/student-corner' },
+                { label: 'Complaints', path: '/complaint' },
+                { label: 'Contact', path: '/contact' },
+                { label: 'Apply Online', path: '/apply' },
+              ].map((item) => (
                 <div key={item.path}>
-                  <Link 
-                    to={item.path} 
-                    onClick={()=>setIsMobileMenuOpen(false)}
+                  <Link
+                    to={item.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className="flex justify-between items-center p-4 rounded-2xl font-bold text-slate-700 hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all"
                   >
                     {item.label}
                   </Link>
                   {item.children && (
                     <div className="pl-6 flex flex-col">
-                      {item.children.map(child => (
-                        <Link key={child.path} to={child.path} onClick={()=>setIsMobileMenuOpen(false)} className="p-3 text-slate-600 rounded-xl hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.path}
+                          to={child.path}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="p-3 text-slate-600 rounded-xl hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all"
+                        >
                           {child.label}
                         </Link>
                       ))}
