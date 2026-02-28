@@ -11,34 +11,34 @@ const departments = [
     color: 'bg-blue-50 text-blue-600',
     careers: ['Software Engineer', 'Data Scientist', 'ML Engineer'],
     description: 'Lead the digital revolution with our cutting-edge CS programs.',
-    stats: { faculty: '24', labs: '6', projects: '15', pubs: '120+' }
+    stats: { faculty: '24', labs: '3', projects: '15+', }
   },
   { 
-    id: 'natural-sciences',
-    name: 'Natural Sciences', 
+    id: 'Zoology',
+    name: 'Zoology', 
     icon: Microscope, 
     color: 'bg-emerald-50 text-emerald-600',
     careers: ['Research Scientist', 'Lab Analyst', 'Environmentalist'],
-    description: 'Explore the mysteries of the universe in our advanced labs.',
-    stats: { faculty: '32', labs: '8', projects: '20', pubs: '250+' }
+    description: 'Zoology is the scientific study of animals, encompassing their structure, behavior, evolution, and interactions with ecosystems.',
+    stats: { faculty: '12', labs: '2', projects: '10+', }
   },
   { 
     id: 'business-admin',
-    name: 'Business Admin', 
+    name: 'Business Administration ', 
     icon: Briefcase, 
     color: 'bg-amber-50 text-amber-600',
     careers: ['Business Analyst', 'HR Manager', 'Entrepreneur'],
-    description: 'Develop leadership skills for the global marketplace.',
-    stats: { faculty: '18', labs: '2', projects: '10', pubs: '85+' }
+    description: 'The Bachelor of Business Administration (BBA) is an undergraduate degree that equips students with essential business knowledge and skills, preparing them for various careers in management, finance, marketing, and entrepreneurship.',
+    stats: { faculty: '18', labs: '1', projects: '10',  }
   },
   { 
     id: 'arts-design',
     name: 'Arts & Design', 
-    icon: Palette, 
+    icon: Globe, 
     color: 'bg-rose-50 text-rose-600',
-    careers: ['Creative Director', 'UI/UX Designer', 'Artist'],
-    description: 'Unleash your creativity and shape visual culture.',
-    stats: { faculty: '15', labs: '4', projects: '12', pubs: '45+' }
+    careers: ['AI Researcher', 'ML Engineer', 'AI Ethics and Policy Specialist'],
+    description: 'Artificial intelligence (AI) is the simulation of human intelligence by machines, enabling them to perform tasks such as learning, reasoning, problem-solving, and decision-making.',
+    stats: { faculty: '7', labs: '4', projects: '12+', }
   },
   { 
     id: 'social-sciences',
@@ -56,7 +56,7 @@ const departments = [
     color: 'bg-purple-50 text-purple-600',
     careers: ['Educator', 'Curriculum Developer', 'School Admin'],
     description: 'Shape the future by inspiring the next generation.',
-    stats: { faculty: '20', labs: '3', projects: '7', pubs: '60+' }
+    stats: { faculty: '20', labs: '3', projects: '7+', pubs: '60+' }
   },
 ];
 
