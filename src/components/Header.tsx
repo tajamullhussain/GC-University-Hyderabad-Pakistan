@@ -90,7 +90,7 @@ export default function Header() {
       </div>
 
       {/* Floating Apply Button (Mobile/Desktop) */}
-      <Link 
+      /* <Link 
         to="/apply" 
         className="fixed bottom-8 right-8 z-[60] bg-gcuh-gold text-gcuh-maroon p-4 rounded-full shadow-2xl border-4 border-white hover:scale-110 active:scale-95 transition-all group flex items-center gap-2"
       >
@@ -98,7 +98,7 @@ export default function Header() {
           <ArrowRight className="w-5 h-5" />
         </div>
         <span className="font-bold pr-2 hidden group-hover:block transition-all">Apply Now</span>
-      </Link>
+      </Link> */
 
       {/* Mobile Menu */}
       <div className={`lg:hidden fixed inset-0 z-[100] transition-all duration-500 ${isMobileMenuOpen ? 'visible' : 'invisible'}`}>
