@@ -32,8 +32,8 @@ const departments = [
     stats: { faculty: '18', labs: '1', projects: '10',  }
   },
   { 
-    id: 'arts-design',
-    name: 'Arts & Design', 
+    id: 'Artificial intelligence',
+    name: 'Artificial intelligence', 
     icon: Globe, 
     color: 'bg-rose-50 text-rose-600',
     careers: ['AI Researcher', 'ML Engineer', 'AI Ethics and Policy Specialist'],
