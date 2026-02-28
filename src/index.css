@@ -42,6 +42,10 @@
   @apply px-4 py-3 text-white font-bold text-sm uppercase transition-colors hover:bg-gcuh-gold/20 border-r border-white/20 last:border-r-0 flex items-center gap-1 cursor-pointer;
 }
 
+.nav-link-modern {
+  @apply px-3 py-2 text-sm font-semibold text-slate-700 hover:text-gcuh-maroon transition-colors;
+}
+
 .dropdown-menu {
   @apply absolute top-full left-0 w-64 bg-gcuh-maroon shadow-xl z-50 hidden group-hover:block;
 }
