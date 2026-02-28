@@ -71,6 +71,9 @@ export default function DemoPopup() {
                     <p className="text-sm text-slate-500 italic">
                       "This website is developed only for educational purposes."
                     </p>
+                    <p className="text-sm text-slate-700 font-semibold mt-3">
+                      Developed by Tajamul Hussain | BS Artificial Intelligence 2024
+                    </p>
                   </div>
                 </div>
 
