@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, ChevronDown, Search, Menu, X, ArrowRight } from 'lucide-react';
+import { Phone, Mail, ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
@@ -71,15 +71,13 @@ export default function Header() {
           <Link to="/scholarships" className="nav-link-modern">Scholarships</Link>
           <Link to="/research" className="nav-link-modern">Research</Link>
           <Link to="/contact" className="nav-link-modern">Contact</Link>
+          <Link to="/apply" className="px-6 py-2.5 bg-gcuh-maroon text-white font-bold rounded-full hover:bg-gcuh-gold transition-all shadow-lg shadow-maroon-900/20 active:scale-95 whitespace-nowrap ml-4">
+            Apply Online
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <button className="p-2 text-slate-500 hover:text-gcuh-maroon transition-colors hidden sm:block">
-            <Search className="w-5 h-5" />
-          </button>
-          <Link to="/apply" className="px-6 py-2.5 bg-gcuh-maroon text-white font-bold rounded-full hover:bg-gcuh-gold transition-all shadow-lg shadow-maroon-900/20 active:scale-95 whitespace-nowrap hidden sm:flex">
-            Apply Online
-          </Link>
+          {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-gcuh-maroon"
@@ -88,7 +86,7 @@ export default function Header() {
           </button>
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
       <div className={`lg:hidden fixed inset-0 z-[100] transition-all duration-500 ${isMobileMenuOpen ? 'visible' : 'invisible'}`}>
         {/* Backdrop */}
@@ -120,35 +118,49 @@ export default function Header() {
             <nav className="space-y-2 flex-grow overflow-y-auto">
               {[
                 { label: 'Home', path: '/' },
-                { label: 'About', path: '/about' },
+                { 
+                  label: 'About', path: '/about', children: [
+                    { label: 'Vision & Mission', path: '/about/vision-mission' },
+                    { label: 'History', path: '/about/university' },
+                    { label: 'VC Message', path: '/about/vc-message' },
+                  ] 
+                },
                 { label: 'Departments', path: '/departments' },
                 { label: 'Scholarships', path: '/scholarships' },
                 { label: 'Research', path: '/research' },
                 { label: 'Student Corner', path: '/student-corner' },
                 { label: 'Complaints', path: '/complaint' },
                 { label: 'Contact', path: '/contact' },
+                { label: 'Apply Online', path: '/apply' },
               ].map((item) => (
-                <Link 
-                  key={item.path}
-                  to={item.path} 
-                  onClick={() => setIsMobileMenuOpen(false)} 
-                  className="flex items-center justify-between p-4 rounded-2xl text-lg font-bold text-slate-700 hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all group"
-                >
-                  {item.label}
-                  <ArrowRight className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                </Link>
+                <div key={item.path}>
+                  <Link 
+                    to={item.path} 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center justify-between p-4 rounded-2xl text-lg font-bold text-slate-700 hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all group"
+                  >
+                    {item.label}
+                    <ArrowRight className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                  </Link>
+
+                  {item.children && (
+                    <div className="pl-6 mt-1 space-y-1">
+                      {item.children.map((child) => (
+                        <Link 
+                          key={child.path} 
+                          to={child.path} 
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="flex items-center justify-between p-3 rounded-xl text-base text-slate-600 hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all group"
+                        >
+                          {child.label}
+                          <ArrowRight className="w-4 h-4 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
-            
-            <div className="pt-6 border-t border-slate-100 mt-auto">
-              <Link 
-                to="/apply" 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="w-full py-4 bg-gcuh-maroon text-white font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-maroon-900/20 active:scale-95 transition-all"
-              >
-                Apply Online <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
           </div>
         </div>
       </div>
