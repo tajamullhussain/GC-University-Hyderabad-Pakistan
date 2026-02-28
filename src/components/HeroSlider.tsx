@@ -113,32 +113,39 @@ export default function HeroSlider() {
         </button>
       </div>
 
-      {/* Video Modal Placeholder */}
-      <AnimatePresence>
-        {showVideo && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
-            onClick={() => setShowVideo(false)}
-          >
-            <div className="relative w-full max-w-5xl aspect-video bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
-                <Play className="w-20 h-20 mb-4 opacity-50" />
-                <h3 className="text-2xl font-bold mb-2">Campus Tour Video</h3>
-                <p className="text-slate-400">Video player would be embedded here</p>
-                <button 
-                  onClick={() => setShowVideo(false)}
-                  className="mt-8 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm font-bold transition-colors"
-                >
-                  Close Player
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+{/* Video Modal */}
+<AnimatePresence>
+  {showVideo && (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+      onClick={() => setShowVideo(false)}
+    >
+      <div 
+        className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+        onClick={(e) => e.stopPropagation()} // modal close na ho jab video pe click karein
+      >
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/h23O5mlsyyc?autoplay=1"
+          title="Campus Tour Video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+
+        <button 
+          onClick={() => setShowVideo(false)}
+          className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white px-4 py-1 rounded-full text-sm font-bold"
+        >
+          Close
+        </button>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </div>
   );
 }
