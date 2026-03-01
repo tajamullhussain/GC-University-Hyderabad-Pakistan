@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
-import { Phone, Mail, ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Phone, Mail, Menu, X, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Scroll lock
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  const mobileItems = [
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+    { name: "Departments", url: "/departments" },
+    { name: "Scholarships", url: "/scholarships" },
+    { name: "Research", url: "/research" },
+    { name: "Contact", url: "/contact" },
+  ];
+
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+      
       {/* Top Bar */}
       <div className="bg-gcuh-maroon text-white py-2 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-[11px] font-bold tracking-wider">
@@ -21,148 +39,117 @@ export default function Header() {
             </div>
           </div>
           <div className="flex gap-4">
-            <Link to="/student-corner" className="hover:text-gcuh-gold transition-colors">STUDENT CORNER</Link>
-            <Link to="/complaint" className="hover:text-gcuh-gold transition-colors">COMPLAINTS</Link>
-            <Link to="#" className="hover:text-gcuh-gold transition-colors">ALUMNI</Link>
+            <Link to="/student-corner" className="hover:text-gcuh-gold">
+              STUDENT CORNER
+            </Link>
+            <Link to="/complaint" className="hover:text-gcuh-gold">
+              COMPLAINTS
+            </Link>
+            <Link to="#">ALUMNI</Link>
           </div>
         </div>
       </div>
 
       {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-3 group">
+
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3">
           <img
             src="https://tse2.mm.bing.net/th/id/OIP.eirSUEHZHhrHA4Fhv32gRwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
-            alt="GCUH Logo"
-            className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform"
-            onError={(e) => { e.target.src = 'https://picsum.photos/seed/gcuh/100/100'; }}
+            alt="Logo"
+            className="h-12 md:h-14 w-auto"
+            onError={(e) => {
+              e.target.src = "https://picsum.photos/seed/gcuh/100/100";
+            }}
           />
           <div>
-            <h1 className="text-gcuh-maroon font-extrabold text-lg md:text-xl leading-none">GC UNIVERSITY</h1>
-            <p className="text-gcuh-gold font-bold text-[10px] md:text-xs tracking-[0.2em]">HYDERABAD</p>
+            <h1 className="text-gcuh-maroon font-extrabold text-lg md:text-xl leading-none">
+              GC UNIVERSITY
+            </h1>
+            <p className="text-gcuh-gold font-bold text-[10px] md:text-xs tracking-[0.2em]">
+              HYDERABAD
+            </p>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-2">
-          <Link to="/" className="nav-link-modern">Home</Link>
-          <div className="relative group">
-            <Link to="/about" className="nav-link-modern flex items-center gap-1 group-hover:text-gcuh-maroon">
-              About <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
-            </Link>
-            <div className="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all translate-y-4 group-hover:translate-y-0 z-50">
-              <div className="px-4 py-2 mb-2 border-b border-slate-50">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">University Info</p>
-              </div>
-              <Link to="/about/vision-mission" className="flex items-center justify-between px-4 py-2.5 text-sm text-slate-700 hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all">
-                Vision & Mission <ArrowRight className="w-3 h-3" />
-              </Link>
-              <Link to="/about/university" className="flex items-center justify-between px-4 py-2.5 text-sm text-slate-700 hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all">
-                History <ArrowRight className="w-3 h-3" />
-              </Link>
-              <Link to="/about/vc-message" className="flex items-center justify-between px-4 py-2.5 text-sm text-slate-700 hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all">
-                VC Message <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-          </div>
-          <Link to="/departments" className="nav-link-modern">Departments</Link>
-          <Link to="/scholarships" className="nav-link-modern">Scholarships</Link>
-          <Link to="/research" className="nav-link-modern">Research</Link>
-          <Link to="/contact" className="nav-link-modern">Contact</Link>
+          <Link className="px-4 py-2 rounded-lg hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon" to="/">Home</Link>
+          <Link className="px-4 py-2 rounded-lg hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon" to="/about">About</Link>
+          <Link className="px-4 py-2 rounded-lg hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon" to="/departments">Departments</Link>
+          <Link className="px-4 py-2 rounded-lg hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon" to="/scholarships">Scholarships</Link>
+          <Link className="px-4 py-2 rounded-lg hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon" to="/research">Research</Link>
+          <Link className="px-4 py-2 rounded-lg hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon" to="/contact">Contact</Link>
+
           <Link
             to="/apply"
-            className="px-6 py-2.5 bg-gcuh-maroon text-white font-bold rounded-full hover:bg-gcuh-gold transition-all shadow-lg shadow-maroon-900/20 active:scale-95 whitespace-nowrap ml-4"
+            className="ml-4 px-6 py-2.5 bg-gcuh-maroon text-white font-bold rounded-full hover:bg-gcuh-gold transition-all"
           >
             Apply Online
           </Link>
         </nav>
 
-        <div className="flex items-center gap-4 lg:hidden">
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-gcuh-maroon"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
+        {/* Mobile Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden p-2 text-gcuh-maroon"
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`lg:hidden fixed inset-0 z-[100] ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+      {/* Mobile Sidebar */}
+      <div
+        className={`lg:hidden fixed inset-0 z-[100] transition-opacity duration-300 ${
+          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
         {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+          className="absolute inset-0 bg-black/50"
           onClick={() => setIsMobileMenuOpen(false)}
         />
+
         {/* Sidebar */}
         <div
-          className={`absolute top-0 left-0 bottom-0 w-[80%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          className={`absolute top-0 left-0 bottom-0 w-[75%] max-w-xs bg-white shadow-2xl transform transition-transform duration-300 ${
+            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         >
-          <div className="p-6 flex flex-col h-full">
-            <div className="flex items-center justify-between mb-10">
-              <div className="flex items-center gap-2">
-                <img
-                  src="https://tse2.mm.bing.net/th/id/OIP.eirSUEHZHhrHA4Fhv32gRwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
-                  alt="Logo"
-                  className="h-10 w-auto"
-                  onError={(e) => { e.target.src = 'https://picsum.photos/seed/gcuh/100/100'; }}
-                />
-                <span className="font-serif font-bold text-gcuh-maroon">GCUH</span>
-              </div>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 rounded-full bg-slate-100 text-slate-500 hover:text-gcuh-maroon transition-all"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+          <div className="p-5 border-b flex justify-between items-center">
+            <span className="font-bold text-gcuh-maroon">Menu</span>
+            <button onClick={() => setIsMobileMenuOpen(false)}>
+              <X className="w-5 h-5" />
+            </button>
+          </div>
 
-            <nav className="flex flex-col gap-2 overflow-y-auto">
-              {[
-                { label: 'Home', path: '/' },
-                {
-                  label: 'About',
-                  path: '/about',
-                  children: [
-                    { label: 'Vision & Mission', path: '/about/vision-mission' },
-                    { label: 'History', path: '/about/university' },
-                    { label: 'VC Message', path: '/about/vc-message' },
-                  ],
-                },
-                { label: 'Departments', path: '/departments' },
-                { label: 'Scholarships', path: '/scholarships' },
-                { label: 'Research', path: '/research' },
-                { label: 'Student Corner', path: '/student-corner' },
-                { label: 'Complaints', path: '/complaint' },
-                { label: 'Contact', path: '/contact' },
-                { label: 'Apply Online', path: '/apply' },
-              ].map((item) => (
-                <div key={item.path}>
-                  <Link
-                    to={item.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex justify-between items-center p-4 rounded-2xl font-bold text-slate-700 hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all"
-                  >
-                    {item.label}
-                  </Link>
-                  {item.children && (
-                    <div className="pl-6 flex flex-col">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.path}
-                          to={child.path}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="p-3 text-slate-600 rounded-xl hover:bg-gcuh-maroon/5 hover:text-gcuh-maroon transition-all"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
+          <nav className="p-4 flex flex-col gap-3">
+            {mobileItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.url}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex justify-between items-center p-4 text-lg font-bold text-slate-800 hover:bg-gcuh-maroon hover:text-white rounded-2xl transition-all"
+              >
+                {item.name}
+                <ArrowRight className="w-5 h-5 opacity-60" />
+              </Link>
+            ))}
+          </nav>
+
+          <div className="p-4 border-t">
+            <Link
+              to="/apply"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full py-4 bg-gcuh-maroon text-white text-center font-bold rounded-2xl hover:bg-gcuh-gold transition-all"
+            >
+              Apply Online
+            </Link>
           </div>
         </div>
       </div>
